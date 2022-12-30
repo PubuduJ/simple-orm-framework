@@ -77,5 +77,17 @@ public class InitializeDB {
         supportedTypes.put(BigDecimal.class, "DECIMAL(10,2)");
         supportedTypes.put(Date.class, "DATE");
         supportedTypes.put(Time.class, "TIME");
+
+        int primaryKeyCount = 0;
+        Field[] fields = classObj.getDeclaredFields();
+        for (Field field : fields) {
+            String name = field.getName();
+            Class<?> fieldType = field.getType();
+            PrimaryKey primaryKey = field.getDeclaredAnnotation(PrimaryKey.class);
+            if (primaryKey != null) primaryKeyCount++;
+            if (!supportedTypes.containsKey(fieldType)) {
+                throw new RuntimeException(fieldType + " is not supported.");
+            }
+        }
     }
 }
