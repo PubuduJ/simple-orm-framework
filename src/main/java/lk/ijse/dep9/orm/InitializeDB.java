@@ -102,5 +102,11 @@ public class InitializeDB {
         ddlBuilder.append(");");
         if (primaryKeyCount != 1) throw new RuntimeException(classObj + " should have only one @PrimaryKey annotation.");
         System.out.println(ddlBuilder.toString());
+
+        try {
+            connection.createStatement().execute(ddlBuilder.toString());
+        } catch (SQLException e) {
+            throw new RuntimeException(e.getMessage());
+        }
     }
 }
