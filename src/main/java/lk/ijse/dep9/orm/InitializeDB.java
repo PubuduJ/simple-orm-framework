@@ -100,6 +100,7 @@ public class InitializeDB {
         }
         ddlBuilder.deleteCharAt(ddlBuilder.length()-1);
         ddlBuilder.append(");");
+        if (primaryKeyCount != 1) throw new RuntimeException(classObj + " should have only one @PrimaryKey annotation.");
         System.out.println(ddlBuilder.toString());
     }
 }
