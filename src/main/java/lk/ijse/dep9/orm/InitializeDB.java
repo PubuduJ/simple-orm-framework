@@ -78,6 +78,9 @@ public class InitializeDB {
         supportedTypes.put(Date.class, "DATE");
         supportedTypes.put(Time.class, "TIME");
 
+        StringBuilder ddlBuilder = new StringBuilder();
+        ddlBuilder.append("CREATE TABLE IF NOT EXISTS `").append(classObj.getSimpleName()).append("` (");
+
         int primaryKeyCount = 0;
         Field[] fields = classObj.getDeclaredFields();
         for (Field field : fields) {
@@ -88,6 +91,15 @@ public class InitializeDB {
             if (!supportedTypes.containsKey(fieldType)) {
                 throw new RuntimeException(fieldType + " is not supported.");
             }
+            ddlBuilder.append("`").append(name)
+                    .append("` ")
+                    .append(supportedTypes.get(fieldType));
+            if (primaryKey != null) ddlBuilder.append(" PRIMARY KEY,");
+            else ddlBuilder.append(",");
+
         }
+        ddlBuilder.deleteCharAt(ddlBuilder.length()-1);
+        ddlBuilder.append(");");
+        System.out.println(ddlBuilder.toString());
     }
 }
