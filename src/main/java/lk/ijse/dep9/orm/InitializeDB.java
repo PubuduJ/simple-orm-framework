@@ -1,13 +1,18 @@
 package lk.ijse.dep9.orm;
 
+import lk.ijse.dep9.orm.annotation.PrimaryKey;
+import lk.ijse.dep9.orm.annotation.Table;
+
 import java.io.File;
+import java.lang.reflect.Field;
+import java.math.BigDecimal;
 import java.net.URISyntaxException;
 import java.net.URL;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class InitializeDB {
 
@@ -45,12 +50,28 @@ public class InitializeDB {
                 File file = new File(resource.toURI());
                 String[] list = file.list();
                 for (String name : list) {
-                    classNames.add(packagesToScan[0].concat(".").concat(name.replace(".class","")));
+                    classNames.add(packagesToScan[i].concat(".").concat(name.replace(".class","")));
                 }
             } catch (URISyntaxException e) {
                 throw new RuntimeException(e.getMessage());
             }
         }
         classNames.forEach(System.out::println);
+
+        for (String className : classNames) {
+            try {
+                Class<?> loadedClass = Class.forName(className);
+                Table tableAnnotation = loadedClass.getDeclaredAnnotation(Table.class);
+                if (tableAnnotation != null) {
+                    createTable(loadedClass, connection);
+                }
+            } catch (ClassNotFoundException e) {
+                throw new RuntimeException(e.getMessage().concat(" class was not found!"));
+            }
+        }
+    }
+
+    private static void createTable(Class<?> classObj, Connection connection) {
+
     }
 }
