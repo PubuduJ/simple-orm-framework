@@ -2,7 +2,6 @@ package lk.ijse.dep9.orm;
 
 import lk.ijse.dep9.orm.annotation.PrimaryKey;
 import lk.ijse.dep9.orm.annotation.Table;
-
 import java.io.File;
 import java.lang.reflect.Field;
 import java.math.BigDecimal;
@@ -42,9 +41,7 @@ public class InitializeDB {
         List<String> classNames = new ArrayList<>();
 
         for (int i = 0; i < packagesToScan.length; i++) {
-            System.out.println(packagesToScan[i]);
             String entityPackage = packagesToScan[i].replaceAll("\\.", "/");
-            System.out.println(entityPackage);
             URL resource = InitializeDB.class.getResource("/".concat(entityPackage));
             try {
                 File file = new File(resource.toURI());
@@ -56,7 +53,6 @@ public class InitializeDB {
                 throw new RuntimeException(e.getMessage());
             }
         }
-        classNames.forEach(System.out::println);
 
         for (String className : classNames) {
             try {
@@ -66,12 +62,20 @@ public class InitializeDB {
                     createTable(loadedClass, connection);
                 }
             } catch (ClassNotFoundException e) {
-                throw new RuntimeException(e.getMessage().concat(" class was not found!"));
+                throw new RuntimeException(e.getMessage().concat(" class was not found."));
             }
         }
     }
 
     private static void createTable(Class<?> classObj, Connection connection) {
-
+        Map<Class<?>, String> supportedTypes = new HashMap<>();
+        supportedTypes.put(String.class, "VARCHAR(256)");
+        supportedTypes.put(int.class, "INT");
+        supportedTypes.put(Integer.class, "INT");
+        supportedTypes.put(double.class, "DOUBLE(10,2)");
+        supportedTypes.put(Double.class, "DOUBLE(10,2)");
+        supportedTypes.put(BigDecimal.class, "DECIMAL(10,2)");
+        supportedTypes.put(Date.class, "DATE");
+        supportedTypes.put(Time.class, "TIME");
     }
 }
