@@ -8,7 +8,7 @@ maps a given classes inside packages into database tables.
 #### The mapping of classes to database tables is as follows,
 
 - The @Table annotation must be used over the class name to create the database table. The name of the database table is the class name.
-- The @ID annotation must be used over the one field in the class to create the table's primary key.
+- The @PrimaryKey annotation must be used over the one field in the class to create the table's primary key.
 - The column names of the database tables are matched to the field names of the class.
 - Database tables can be created with both instance and static variables.
 
@@ -46,7 +46,7 @@ project to your local computer.
 3. To install this framework to local jar repository execute `mvn install` command.
 4. Once the framework is installed in your local JAR repository, it can be used with any Java project.
 5. Inorder to use the framework call `InitializeDB.initialize()` method by passing the correct arguments.
-6. `InitializeDB.initialize()` method requires host, port, database name, username, password and package list to scan as Strings.
+6. `InitializeDB.initialize()` method requires host, port, database name, username, password and package list to scan as String arguments.
 
 ## Version
 v1.0.0
