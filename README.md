@@ -7,8 +7,8 @@ maps a given classes inside packages into database tables.
 
 #### The mapping of classes to database tables is as follows,
 
-- The @Table annotation must be used over the class name to create the database table. The name of the database table is the class name.
-- The @PrimaryKey annotation must be used over the one field in the class to create the table's primary key.
+- @Table annotation must be used over the class name to create the database table. The name of the database table is the class name.
+- @PrimaryKey annotation must be used over the one field in the class to create the table's primary key.
 - The column names of the database tables are matched to the field names of the class.
 - Database tables can be created with both instance and static variables.
 
@@ -40,17 +40,30 @@ The goal of this project was to improve the knowledge of java annotations and ja
 This project can be used by cloning the
 project to your local computer.
 
-#### Clone this repository
 1. Clone the project using `git clone https://github.com/PubuduJ/simple-orm-framework.git` terminal command.
 2. Open the `pom.xml` file from **IntelliJ IDEA**, make sure to open this as a project.
 3. To install this framework to local jar repository execute `mvn install` command.
 4. Once the framework is installed in your local JAR repository, it can be used with any Java project.
-5. Inorder to use the framework call `InitializeDB.initialize()` method by passing the correct arguments.
-6. `InitializeDB.initialize()` method requires host, port, database name, username, password and package list to scan as String arguments.
+5. Inorder to use the framework add below dependency to the project pom.xml file.
+    ```
+        <dependency>
+            <groupId>lk.ijse.dep9</groupId>
+            <artifactId>simple-orm</artifactId>
+            <version>1.0.0</version>
+        </dependency>
+   ```
+6. call the `InitializeDB.initialize()` method in the source code by passing the correct arguments.
+7. `InitializeDB.initialize()` method requires host, port, database name, username, password and package list to scan as String arguments.
+
+## An example of how the framework is used
+
+The scanning packages in this example are dto and entity, and tables are automatically built for the User and Student classes inside those packages.
+
+<img src="asset/sample-demo.png" alt="text-editor" width="900px"/>
 
 ## Version
 v1.0.0
 
 ## License
-Copyright &copy; 2022 [Pubudu Janith](https://www.linkedin.com/in/pubudujanith94/). All Rights Reserved.<br>
+Copyright &copy; 2023 [Pubudu Janith](https://www.linkedin.com/in/pubudujanith94/). All Rights Reserved.<br>
 This project is licensed under the [MIT license](LICENSE.txt).
