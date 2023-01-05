@@ -3,7 +3,7 @@
 ### A simple object–relational mapping framework
 
 This is a simple framework that creates a relational database system and 
-maps a given classes inside packages into database tables.
+maps given classes inside packages into database tables.
 
 #### The mapping of classes to database tables is as follows,
 
@@ -43,8 +43,8 @@ project to your local computer.
 1. Clone the project using `git clone https://github.com/PubuduJ/simple-orm-framework.git` terminal command.
 2. Open the `pom.xml` file from **IntelliJ IDEA**, make sure to open this as a project.
 3. To install this framework to local jar repository execute `mvn install` command.
-4. Once the framework is installed in your local JAR repository, it can be used with any Java project.
-5. Inorder to use the framework add below dependency to the project pom.xml file.
+4. Once the framework is installed in local JAR repository, it can be used with any Java project.
+5. Inorder to use the framework add below dependency to your Java project pom.xml file.
     ```
         <dependency>
             <groupId>lk.ijse.dep9</groupId>
@@ -57,7 +57,7 @@ project to your local computer.
 
 ## An example of how the framework is used
 
-The scanning packages in this example are dto and entity, and tables are automatically built for the User and Student classes inside those packages.
+The scanning packages in the example are dto and entity, and tables are automatically built for the User and Student classes inside those packages.
 
 <img src="asset/sample-demo.png" alt="text-editor" width="900px"/>
 
