@@ -5,6 +5,8 @@
 This is a simple framework that creates a relational database system and 
 maps given classes inside packages into database tables.
 
+This framework only works with the **MySQL** relational database management system.
+
 #### The mapping of classes to database tables is as follows,
 
 - @Table annotation must be used over the class name to create the database table. The name of the database table is the class name.
@@ -55,11 +57,14 @@ project to your local computer.
 6. call the `InitializeDB.initialize()` method in the source code by passing the correct arguments.
 7. `InitializeDB.initialize()` method requires host, port, database name, username, password and package list to scan as String arguments.
 
-## An example of how the framework is used
+## Sample usage of the framework
 
 The scanning packages in the example are dto and entity, and tables are automatically built for the User and Student classes inside those packages.
 
 <img src="asset/sample-demo.png" alt="text-editor" width="900px"/>
+
+## Credits
+This project was carried out under the guidance of the [IJSE](https://www.ijse.lk/) Direct Entry Program 9.
 
 ## Version
 v1.0.0
