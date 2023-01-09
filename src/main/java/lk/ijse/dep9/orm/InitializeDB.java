@@ -85,7 +85,7 @@ public class InitializeDB {
         Field[] fields = classObj.getDeclaredFields();
         for (Field field : fields) {
             String stringField = field.toGenericString();
-            if (stringField.contains(" static")) throw new RuntimeException("static variables cannot be mapped in to table columns");
+            if (stringField.contains(" static ")) throw new RuntimeException("static variables cannot be mapped in to table columns");
             String name = field.getName();
             Class<?> fieldType = field.getType();
             PrimaryKey primaryKey = field.getDeclaredAnnotation(PrimaryKey.class);

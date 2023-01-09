@@ -51,7 +51,7 @@ project to your local computer.
         <dependency>
             <groupId>lk.ijse.dep9</groupId>
             <artifactId>simple-orm</artifactId>
-            <version>1.0.0</version>
+            <version>1.0.2</version>
         </dependency>
    ```
 6. call the `InitializeDB.initialize()` method in the source code by passing the correct arguments.
