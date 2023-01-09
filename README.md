@@ -67,7 +67,7 @@ The scanning packages in the example are dto and entity, and tables are automati
 This project was carried out under the guidance of the [IJSE](https://www.ijse.lk/) Direct Entry Program 9.
 
 ## Version
-v1.0.1
+v1.0.2
 
 ## License
 Copyright &copy; 2023 [Pubudu Janith](https://www.linkedin.com/in/pubudujanith94/). All Rights Reserved.<br>
