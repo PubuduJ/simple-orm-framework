@@ -10,9 +10,9 @@ This framework only works with the **MySQL** relational database management syst
 #### The mapping of classes to database tables is as follows,
 
 - @Table annotation must be used over the class name to create the database table. The name of the database table is the class name.
-- @PrimaryKey annotation must be used over the one field in the class to create the table's primary key.
-- The column names of the database tables are matched to the field names of the class.
-- Database tables can be created with both instance and static variables.
+- @PrimaryKey annotation must be used over the one instance field in the class to create the table's primary key.
+- The column names of the database tables are matched to the instance field names of the class.
+- Database tables can be created with only using instance variables.
 
 #### Supported data types in the framework,
 - String -> VARCHAR(256)
